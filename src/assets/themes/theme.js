@@ -8,6 +8,7 @@ const theme = createTheme({
 			white: '#FFFFFF',
 			softBlue: '#8BACD9',
 			cyan: '#00FFF8',
+			darkBlue: '#2E405A',
 		},
 	},
 });
