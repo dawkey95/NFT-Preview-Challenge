@@ -7,15 +7,26 @@ import {
 	Grid,
 	Typography,
 	Stack,
+	CardActionArea,
 } from '@mui/material';
 import NFTData from '../data/data';
 import image from '../assets/images/image-equilibrium.jpg';
+import hoverView from '../assets/images/icon-view.svg';
 import avatar from '../assets/images/image-avatar.png';
 import ethereum from '../assets/images/icon-ethereum.svg';
 import clock from '../assets/images/icon-clock.svg';
+import { useState } from 'react';
 
 const NFTCard = () => {
 	const { title, details, cost, timeLeft, user } = NFTData;
+	const [isHover, setIsHover] = useState(false);
+
+	const handleMouseEnter = () => {
+		setIsHover(true);
+	};
+	const handleMouseLeave = () => {
+		setIsHover(false);
+	};
 
 	return (
 		<>
@@ -39,7 +50,35 @@ const NFTCard = () => {
 							borderRadius: 3,
 						}}
 					>
-						<CardMedia sx={{ height: 278, borderRadius: 2 }} image={image} />
+						<CardActionArea
+							onMouseEnter={handleMouseEnter}
+							onMouseLeave={handleMouseLeave}
+						>
+							<Box
+								sx={{
+									height: 278,
+									borderRadius: 2,
+									backgroundImage: `url(${image})`,
+									backgroundSize: 'contain',
+								}}
+							>
+								{isHover && (
+									<>
+										<CardMedia
+											className="card-image"
+											sx={{
+												height: 278,
+												borderRadius: 2,
+												backgroundColor: 'customColors.cyan',
+												opacity: 0.5,
+											}}
+										>
+											<Box component="img" sx={{ height: 48 }} src={hoverView} alt="eye" />
+										</CardMedia>
+									</>
+								)}
+							</Box>
+						</CardActionArea>
 
 						<CardContent
 							sx={{
