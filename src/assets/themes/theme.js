@@ -11,6 +11,9 @@ const theme = createTheme({
 			darkBlue: '#2E405A',
 		},
 	},
+	typography: {
+		fontFamily: ['Outfit', 'sans-serif'].join(','),
+	},
 });
 
 export default theme;
