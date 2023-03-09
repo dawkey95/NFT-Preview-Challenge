@@ -2,7 +2,6 @@ import {
 	Box,
 	Card,
 	CardContent,
-	CardMedia,
 	Container,
 	Grid,
 	Typography,
@@ -16,6 +15,24 @@ import avatar from '../assets/images/image-avatar.png';
 import ethereum from '../assets/images/icon-ethereum.svg';
 import clock from '../assets/images/icon-clock.svg';
 import { useState } from 'react';
+
+const typoSX = {
+	color: 'customColors.white',
+	fontSize: 22,
+	fontWeight: 600,
+	'&:hover': {
+		color: 'customColors.cyan',
+	},
+};
+
+const userSX = {
+	color: 'customColors.white',
+	fontSize: 16,
+	fontWeight: 400,
+	'&:hover': {
+		color: 'customColors.cyan',
+	},
+};
 
 const NFTCard = () => {
 	const { title, details, cost, timeLeft, user } = NFTData;
@@ -63,19 +80,25 @@ const NFTCard = () => {
 								}}
 							>
 								{isHover && (
-									<>
-										<CardMedia
-											className="card-image"
+									<Grid>
+										<Box
+											display="flex"
+											justifyContent="center"
+											alignItems="center"
 											sx={{
 												height: 278,
 												borderRadius: 2,
-												backgroundColor: 'customColors.cyan',
-												opacity: 0.5,
+												backgroundColor: 'rgba(0, 255, 248, 0.5)',
 											}}
 										>
-											<Box component="img" sx={{ height: 48 }} src={hoverView} alt="eye" />
-										</CardMedia>
-									</>
+											<Box
+												component="img"
+												sx={{ height: 48, opacity: 1 }}
+												src={hoverView}
+												alt="eye"
+											/>
+										</Box>
+									</Grid>
 								)}
 							</Box>
 						</CardActionArea>
@@ -91,13 +114,11 @@ const NFTCard = () => {
 							<Typography
 								gutterBottom
 								variant="h1"
-								component="div"
-								color={'customColors.white'}
-								sx={{ fontSize: 22 }}
-								fontWeight={600}
+								sx={typoSX}
 							>
 								{title}
 							</Typography>
+
 							<Typography
 								gutterBottom
 								color="customColors.softBlue"
@@ -154,7 +175,7 @@ const NFTCard = () => {
 								/>
 								<Typography color={'customColors.softBlue'} fontWeight={400}>
 									Creation of{' '}
-									<Box display={'inline'} color={'customColors.white'} fontWeight={400}>
+									<Box display={'inline'} sx={userSX}>
 										{user}
 									</Box>
 								</Typography>
