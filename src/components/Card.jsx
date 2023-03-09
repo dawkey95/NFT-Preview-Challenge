@@ -82,7 +82,7 @@ const NFTCard = () => {
 										>
 											<Box
 												component="img"
-												sx={{ height: 48, opacity: 1 }}
+												sx={{ height: 48 }}
 												src={hoverView}
 												alt="eye"
 											/>
