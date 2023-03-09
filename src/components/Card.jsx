@@ -1,4 +1,8 @@
+// IMPORTS
 import { useState } from 'react';
+import NFTData from '../data/data';
+
+// MATERIAL UI IMPORTS
 import {
 	Box,
 	Card,
@@ -10,6 +14,7 @@ import {
 	CardActionArea,
 } from '@mui/material';
 
+// SX STYLE IMPORTS
 import {
 	typoSX,
 	userSX,
@@ -17,16 +22,17 @@ import {
 	costSX,
 	timeSX,
 } from '../assets/themes/sx-styles';
-import NFTData from '../data/data';
-
-import image from '../assets/images/image-equilibrium.jpg';
-import hoverView from '../assets/images/icon-view.svg';
-import avatar from '../assets/images/image-avatar.png';
-import ethereum from '../assets/images/icon-ethereum.svg';
-import clock from '../assets/images/icon-clock.svg';
 
 const NFTCard = () => {
-	const { title, details, cost, timeLeft, user } = NFTData;
+	const {
+		title,
+		details,
+		cost,
+		timeLeft,
+		user,
+		images: { image, hoverView, avatar, ethereum, clock },
+	} = NFTData;
+
 	const [isHover, setIsHover] = useState(false);
 
 	const handleMouseEnter = () => {
@@ -132,11 +138,12 @@ const NFTCard = () => {
 								justifyContent="flex-start"
 								alignItems="center"
 							>
-								<img
+								<Box
+									component="img"
 									src={avatar}
 									alt="guy staring into sunlight"
 									width={33}
-									style={{ border: 'solid #fff 1.5px', borderRadius: 100 }}
+									sx={{ border: 'solid #fff 1.5px', borderRadius: 100 }}
 								/>
 								<Typography color={'customColors.softBlue'} fontWeight={400}>
 									Creation of{' '}
