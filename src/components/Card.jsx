@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
 	Box,
 	Card,
@@ -8,31 +9,21 @@ import {
 	Stack,
 	CardActionArea,
 } from '@mui/material';
+
+import {
+	typoSX,
+	userSX,
+	cardSetup,
+	costSX,
+	timeSX,
+} from '../assets/themes/sx-styles';
 import NFTData from '../data/data';
+
 import image from '../assets/images/image-equilibrium.jpg';
 import hoverView from '../assets/images/icon-view.svg';
 import avatar from '../assets/images/image-avatar.png';
 import ethereum from '../assets/images/icon-ethereum.svg';
 import clock from '../assets/images/icon-clock.svg';
-import { useState } from 'react';
-
-const typoSX = {
-	color: 'customColors.white',
-	fontSize: 22,
-	fontWeight: 600,
-	'&:hover': {
-		color: 'customColors.cyan',
-	},
-};
-
-const userSX = {
-	color: 'customColors.white',
-	fontSize: 16,
-	fontWeight: 400,
-	'&:hover': {
-		color: 'customColors.cyan',
-	},
-};
 
 const NFTCard = () => {
 	const { title, details, cost, timeLeft, user } = NFTData;
@@ -58,15 +49,7 @@ const NFTCard = () => {
 					justifyContent="center"
 					style={{ minHeight: '100vh' }}
 				>
-					<Card
-						sx={{
-							maxWidth: 327,
-							height: 543,
-							padding: 3,
-							backgroundColor: 'customColors.cardBackground',
-							borderRadius: 3,
-						}}
-					>
+					<Card sx={cardSetup}>
 						<CardActionArea
 							onMouseEnter={handleMouseEnter}
 							onMouseLeave={handleMouseLeave}
@@ -111,11 +94,7 @@ const NFTCard = () => {
 								px: 0,
 							}}
 						>
-							<Typography
-								gutterBottom
-								variant="h1"
-								sx={typoSX}
-							>
+							<Typography gutterBottom variant="h1" sx={typoSX}>
 								{title}
 							</Typography>
 
@@ -136,26 +115,12 @@ const NFTCard = () => {
 										src={ethereum}
 										alt="ethereum"
 									/>
-									<Typography
-										color="customColors.cyan"
-										fontWeight={600}
-										fontSize={14}
-										marginLeft={1}
-									>
-										{cost}
-									</Typography>
+									<Typography sx={costSX}>{cost}</Typography>
 								</Box>
 
 								<Box display="flex" alignItems={'center'}>
 									<Box component="img" sx={{ height: 16 }} src={clock} alt="clock" />
-									<Typography
-										color="customColors.softBlue"
-										fontWeight={400}
-										fontSize={14}
-										marginLeft={1}
-									>
-										{timeLeft} days left
-									</Typography>
+									<Typography sx={timeSX}>{timeLeft} days left</Typography>
 								</Box>
 							</Box>
 						</CardContent>
